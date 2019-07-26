@@ -1,0 +1,60 @@
+{{include './header.html'}}
+
+<style>
+.pagecentre{
+
+    width: 80%;
+    margin: 0 auto;
+    /* text-align: center; */
+}
+.msg p.title{
+    font-weight: bolder;
+    font-size: 18px;
+}
+.huang,.title{
+    color: #ff6700;
+}
+.msg p,.reply p{
+    margin-top: 20px;
+}
+.msg span a,.reply span a{
+    color: #ff6700;
+    text-decoration: none;
+    font-weight: bolder;
+}
+
+h1{
+    background-color: #ff6700;
+    color: #fff;
+    text-align: center
+}
+</style>
+<div class="zhongjian">
+<div class="pagecentre">
+   <h1></h1> 
+   {{each data msg i}}
+  
+   <div class="msg-list">
+       <div class="msg">
+         
+           <span> <a href="/information?_id={{msg._id}}">{{msg.title}}</a>  </span>
+             <span>|标签：</span>   
+             <span class="huang"> <a href="/tagpage/{{msg.tag[0]}}">{{msg.tag[0]}}</a> </span>
+         <span class="huang"><a href="/tagpage/{{msg.tag[1]}}">{{msg.tag[1]}}</a> </span>
+         <span class="huang"><a href="/tagpage/{{msg.tag[2]}}"> {{msg.tag[2]}}</a></span><br>
+           <span>{{msg.time}} |</span>
+           <span>阅读：{{msg.cot}}次 |评论：{{msg.reples.length}} </span>
+       </div>
+     
+   </div>
+   
+  
+   {{/each}}
+  
+</div>
+
+
+
+</div>
+
+{{include './footer.html'}}

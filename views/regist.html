@@ -1,0 +1,27 @@
+{{include './header.html'}}
+    <div class="container">
+        <form action="/regist" method="post">
+            <label>账号：<input type="text" name="username" required  value="张三"></label><br>
+            <label>密码：<input type="text" name="password" id="password" required  value="123"></label><br>
+            <label>确认：<input type="text" name="confirmInput" id="confirmInput" required  value="123"></label><br>
+            <label>年龄：<input type="text" name="age"  required  value="21"></label><br>
+
+            <button type="submit">注册</button> {{error}}
+        </form>
+    </div>
+    {{include './footer.html'}}
+<script>
+var form = document.querySelector('form');
+var confirmInput = document.querySelector('#confirmInput');
+var pswInput = document.querySelector('#password');
+console.log(form);
+form.onsubmit = function(ev){
+    // console.log('---:'+confirmInput.value+"--:"+pswInput.value);
+    if (pswInput.value!= confirmInput.value) {
+        // 阻止表单向服务器提交数据的默认行为
+        ev.preventDefault();
+        alert('两次密码输入不一致');
+    }
+}
+
+</script>

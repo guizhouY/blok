@@ -1,0 +1,81 @@
+{{include './header.html'}}
+
+<style>
+.pagecentre{
+
+    width: 80%;
+    margin: 0 auto;
+    /* text-align: center; */
+}
+.msg p.title{
+    font-weight: bolder;
+    font-size: 18px;
+}
+.huang,.title{
+    color: #ff6700;
+}
+.msg p,.reply p{
+    margin-top: 20px;
+}
+.msg span a,.reply span a{
+    color: #ff6700;
+    text-decoration: none;
+}
+</style>
+<div class="zhongjian">
+<div class="pagecentre">
+  
+
+
+   <div class="msg-list">
+       <div class="msg">
+
+          
+           <p> 作者：<span class="huang"><a href="/otherPage?username={{msgs.author.username}}">{{msgs.author.username}}</a></span>   |日期：{{msgs.time}} |标签：<span class="huang">{{msgs.tag.toString()}}</span> </p>
+           <p  style="color: #ff6700">{{msgs.msg}} </p>
+           <p>阅读：{{msgs.cot}}次 |评论：{{msgs.reples.length}} </p>
+        
+       </div>
+       <h2>评论</h2>
+     
+       <div class="reply">
+            <ol>
+               
+                {{each msgs.reples reply}}
+                <li>
+                    <p><span class="huang"><a href="/otherPage?username={{reply.username}}">{{reply.username}}</a> </span>回复于{{reply.time}}</p>
+                    <p> {{reply.content}}</p>
+                   
+                </li>
+                {{/each}}
+            </ol>
+            {{if user}}
+            <form action="/add/reply" method="post">
+                <!-- 回复的时候要明确回复的是哪一条消息，根据消息的id明确是哪一条消息 -->
+                <input type="text" name="_id" value="{{msgs._id}}" hidden>
+                <textarea name="content" id="reply" ></textarea>
+                <br>
+                <button type="submit">回复</button>
+            </form>
+            {{/if}}
+        </div>
+   </div>
+
+
+  
+</div>
+
+
+
+</div>
+<script>
+$('.delete').click((ev)=>{
+    if (!confirm('确定删除？')) {
+        console.log('取消删除');
+        ev.preventDefault();
+    }
+
+});
+
+</script>
+{{include './footer.html'}}

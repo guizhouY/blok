@@ -1,0 +1,16 @@
+{{include './header.html'}}
+<div class="zhongjian">
+
+    <form action="/add/msg" method="post">
+<label for="">标题：</label>
+<input type="text" name="title" class="kk" required value="" ><br>
+<label for="">标签：</label>
+<input type="text" name="tag" class="kk"  value=""><input type="text" name="tag" class="kk"><input type="text" name="tag" class="kk"><br>
+<label for="">内容</label><br>
+<textarea name="msg" id="" cols="30" rows="10" required>你好</textarea><br>
+<button type="submit">发布</button>{{error}}
+
+</form>
+<p>{{bianji}} </p>
+</div>
+{{include './footer.html'}}

@@ -1,0 +1,50 @@
+{{include './header.html'}}
+<style>
+.msg p.title{
+    font-weight: bolder;
+    font-size: 18px;
+}
+.huang,.title{
+    color: #ff6700;
+}
+.msg p,.reply p{
+    margin-top: 20px;
+}
+.msg a,.reply a{
+    color: #ff6700;
+    text-decoration: none;
+}
+</style>
+
+<div class="zhongjian" style="display: flex;font-size: 16px;">
+        {{if msgs.length>0 }}
+        {{include './fenye.html'}}
+       {{/if}}
+    <div class="pageleft">
+        {{include './zuobian.html'}}
+    </div>
+<div class="pageright">
+{{each msgs msg i}}
+ 
+ 
+<div class="msg-list">
+    <div class="msg">
+
+        <p class="title"><a href="/information?_id={{msg._id}}">{{msg.title}} </a> </p>
+        <p> 作者：<span class="huang"><a href="/otherPage?username={{msg.author.username}}"> {{msg.author.username}}</a> </span>  
+         |日期：{{msg.time}} |标签：
+         <span class="huang"> <a href="/tagpage/{{msg.tag[0]}}">{{msg.tag[0]}}</a> </span>
+         <span class="huang"><a href="/tagpage/{{msg.tag[1]}}">{{msg.tag[1]}}</a> </span>
+         <span class="huang"><a href="/tagpage/{{msg.tag[2]}}"> {{msg.tag[2]}}</a></span>
+         </p>
+        <p><a href="/information?_id={{msg._id}}">{{msg.msg}}</a>  </p>
+        <p>阅读：{{msg.cot}}次 |评论：{{msg.reples.length}} </p>
+    </div>
+    
+
+</div>
+
+{{/each}}
+</div>
+</div>
+{{include './footer.html'}}

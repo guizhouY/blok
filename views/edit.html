@@ -1,0 +1,19 @@
+{{include './header.html'}}
+
+<div class="zhongjian">
+      
+        <form action="/edit" method="post">
+            <input type="text" name="_id" value="{{bianji._id}}" hidden>
+    <label for="">标题：</label>
+    <input type="text" name="title" class="kk" required value="{{bianji.title}}" disabled ><br>
+    <label for="">标签：</label>
+    <input type="text" name="tag" class="kk" required value="{{bianji.tag[0]}}" disabled><input type="text" name="tag" class="kk" value="{{bianji.tag[1]}}" disabled ><input type="text" name="tag" class="kk" value="{{bianji.tag[2]}}" disabled><br>
+    <label for="">内容</label><br>
+    <textarea name="msg" id="" cols="30" rows="10" required >{{bianji.msg}}</textarea><br>
+    <button type="submit">修改</button>{{error}}
+    
+    </form>
+    <p>{{bianji}} </p>
+    </div>
+
+{{include './footer.html'}}

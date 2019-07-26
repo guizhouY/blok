@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>博客</title>
+    <link rel="stylesheet" href="/css/index.css">
+    <script src="/js/jquery-3.4.1.js"></script>
+</head>
+
+   
+
+<body>
+
+    <header>
+        <div class="zhongjian">
+            <div class="top">
+                <div class="left">
+                    {{if user}}
+                    <div class="logout" style="margin-right: 5px;">
+                        <img class="headerimg" src="{{user.headerurl}}" alt="">
+                        <span class="user"><a href="/xinxi">{{user.username}}</a>  <span>的个人博客</span> </span>
+                        <a href="/logout">退出登录</a>
+                    </div>
+                    {{else}}
+                    <div class="login">
+                        <a href="/login">登录</a>
+                        <a href="/regist">注册</a>
+                    </div>
+                    {{/if}}
+                </div>
+                <div class="right">
+                    <li><a href="/list">首页</a> </li>
+                    <li><a href="/add">发布</a> </li>
+                    <li><a href="/people">个人</a></li>
+                    <li><a href="/tagAll">标签</a> </li>
+                    <li>关于</li>
+                </div>
+            </div>
+        </div>
+    </header>
+       
+                

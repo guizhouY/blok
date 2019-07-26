@@ -1,0 +1,63 @@
+{{include './header.html'}}
+
+<style>
+.pagecentre{
+
+    width: 80%;
+    margin: 0 auto;
+    /* text-align: center; */
+}
+.msg p.title{
+    font-weight: bolder;
+    font-size: 18px;
+}
+.huang,.title{
+    color: #ff6700;
+}
+.msg p,.reply p{
+    margin-top: 20px;
+}
+.msg span a,.reply span a{
+    color: #ff6700;
+    text-decoration: none;
+}
+</style>
+<div class="zhongjian">
+<div class="pagecentre">
+   <h1 style="text-align: center">{{user.username}}的{{pages}}</h1> 
+   {{each msgs msg i}}
+   {{if msg.author.username==user.username}}
+   <div class="msg-list">
+       <div class="msg">
+           
+           <p class="title">{{msg.title}} </p>
+           <p> 作者：<span class="huang"><a href="/otherPage?username={{msg.author.username}}">{{msg.author.username}}</a></span>   |日期：{{msg.time}} |标签：<span class="huang">{{msg.tag.toString()}}</span> </p>
+           <p>{{msg.msg}} </p>
+           <p>阅读：{{i}}次 |评论：{{msg.reples.length}} </p>
+           <p> 
+               <a class="edit" href="/edit?_id={{msg._id}}">编辑</a>
+               <a class="delete" href="/delete?_id={{msg._id}}">删除</a>
+           </p>
+       </div>
+       
+      
+   </div>
+   {{/if}}
+   {{/each}}
+  
+</div>
+
+
+
+</div>
+<script>
+$('.delete').click((ev)=>{
+    if (!confirm('确定删除？')) {
+        console.log('取消删除');
+        ev.preventDefault();
+    }
+
+});
+
+</script>
+{{include './footer.html'}}
